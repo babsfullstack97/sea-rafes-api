@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from 'typeorm';
 import { Project } from 'src/project/entities/project.entity';
 import { User } from 'src/users/entities/user.entity';
@@ -38,19 +39,15 @@ export class Session extends EntityHelper {
   @Column({ type: 'time' })
   start_time: Date;
 
-  @Column({ type: 'date' })
-  end_date: Date;
-
-  // Heure de fin de la session
-  @Column({ type: 'time' })
-  end_time: Date;
-
   // A session can have many projects
-  @ManyToOne(() => Project, (project) => project.session)
+  @OneToMany(() => Project, (project) => project.session)
   project: Project;
 
-  // A  session can have many users
-  @ManyToOne(() => User, (user) => user.sessions)
+  /**
+   * A session can have many users
+   * the role of the user in the session must be evaluator
+   */
+  @OneToMany(() => User, (user) => user.sessions)
   user: User;
 
   // A session can have link for online meeting

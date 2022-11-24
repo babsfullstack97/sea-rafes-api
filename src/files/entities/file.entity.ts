@@ -17,7 +17,9 @@ export class FileEntity extends EntityHelper {
   id: string;
 
   @Allow()
-  @Column()
+  @Column({
+    type: 'text',
+  })
   path: string;
 
   @AfterLoad()

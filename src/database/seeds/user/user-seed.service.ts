@@ -24,10 +24,14 @@ export class UserSeedService {
     if (countAdmin === 0) {
       await this.repository.save(
         this.repository.create({
+          username: 'admin',
           firstName: 'Super',
           lastName: 'Admin',
           email: 'admin@example.com',
+          phone: '12345678',
+          address: '123 Street',
           password: 'secret',
+
           role: {
             id: RoleEnum.admin,
             name: 'Admin',
@@ -51,13 +55,16 @@ export class UserSeedService {
     if (countUser === 0) {
       await this.repository.save(
         this.repository.create({
+          username: 'john',
           firstName: 'John',
           lastName: 'Doe',
           email: 'john.doe@example.com',
+          phone: '1234567890',
+          address: '123 Street',
           password: 'secret',
           role: {
             id: RoleEnum.user,
-            name: 'Admin',
+            name: 'User',
           },
           status: {
             id: StatusEnum.active,

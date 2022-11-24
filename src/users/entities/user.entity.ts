@@ -120,8 +120,8 @@ export class User extends EntityHelper {
    * A user can have many projects
    * A project can have one user only
    */
-  @OneToMany(() => Project, (project) => project.user)
-  projects: Project[];
+  //@OneToMany(() => Project, (project) => project.user)
+  //projects: Project[];
 
   /**
    * A user can have one session at a time

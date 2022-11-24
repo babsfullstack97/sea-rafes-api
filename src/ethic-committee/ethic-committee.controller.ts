@@ -28,8 +28,7 @@ import { infinityPagination } from 'src/utils/infinity-pagination';
  */
 @ApiTags('Ethic Committee')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'), RolesGuard)
-@Roles(RoleEnum.user, RoleEnum.admin)
+@UseGuards(AuthGuard('jwt'))
 @Controller({
   path: 'ethic-committee',
   version: '1',

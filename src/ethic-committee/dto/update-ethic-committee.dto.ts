@@ -2,13 +2,7 @@ import { PartialType } from '@nestjs/swagger';
 import { CreateEthicCommitteeDto } from './create-ethic-committee.dto';
 import { Transform } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsOptional,
-  MinLength,
-  Validate,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, Validate } from 'class-validator';
 import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
 import { IsExist } from 'src/utils/validators/is-exists.validator';
 

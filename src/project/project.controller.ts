@@ -23,10 +23,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/roles/roles.guard';
 import { infinityPagination } from 'src/utils/infinity-pagination';
 
-@ApiBearerAuth()
-@Roles(RoleEnum.user, RoleEnum.admin)
 @ApiTags('project')
-@UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller({
   path: 'project',
   version: '1',

@@ -5,7 +5,6 @@ import { IsNotExist } from '../../utils/validators/is-not-exists.validator';
 import { IsExist } from '../../utils/validators/is-exists.validator';
 import { Project } from '../../project/entities/project.entity';
 import { User } from '../../users/entities/user.entity';
-import { Role } from 'src/roles/entities/role.entity';
 
 export class CreateSessionDto {
   // title
@@ -34,42 +33,25 @@ export class CreateSessionDto {
   @Validate(IsNotExist, ['Session', 'start_time'])
   start_time: Date;
 
-  // end_date
-  @ApiProperty()
-  @IsNotEmpty()
-  @Validate(IsNotExist, ['Session', 'end_date'])
-  end_date: Date;
-
-  // end_time
-  @ApiProperty()
-  @IsNotEmpty()
-  @Validate(IsNotExist, ['Session', 'end_time'])
-  end_time: Date;
-
   // link
   @ApiProperty()
-  @IsNotEmpty()
+  @IsOptional()
   @Validate(IsNotExist, ['Session', 'link'])
   link: string;
 
   /**
-   * A session can have many projects
-   * @type {Project}
+   * The project must have status submitted
    */
   @ApiProperty()
-  @IsNotEmpty()
+  @IsOptional()
   @Validate(IsExist, ['Project', 'id'])
   project: Project;
 
   /**
-   * A session can have many users
-   * @type {User}
-   * the user must have the role of evaluator
-   * @type {Role}
+   * If user is evaluator, he can be assigned to a session
    */
   @ApiProperty()
-  @IsNotEmpty()
-  // a user can have many sessions and he can be evaluator for many sessions
+  @IsOptional()
   @Validate(IsExist, ['User', 'id'])
-  user: User;
+  evaluator: User[];
 }
