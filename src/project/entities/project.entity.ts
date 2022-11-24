@@ -29,7 +29,9 @@ export enum ProjectFileType {
   PPTX = 'pptx',
   TXT = 'txt',
 }
-
+/**
+ * Project document type
+ */
 /**
  * Project Document type
  */
